@@ -1,0 +1,2 @@
+timestamp,game_round,map,latency,event,killer_id,victim_id,weapon_id,killer_ip,victim_ip,weapon,player_id,score,player_ip,points,log_line
+2024-08-22 02:53:53,3,wrackdm17,0,Kill,1022.0,3.0,22.0,<world>,"8051<UP,POINTOPOINT,RUNNING,MULTICA",MOD_TRIGGER_HURT,0.0,10.0,Player_138.25.249.94,10.0,"2024-08-22 02:53:53: \x08 \x08Kill: 1022 3 22: <world> killed 8051<UP,POINTOPOINT,RUNNING,MULTICA by MOD_TRIGGER_HURT"
