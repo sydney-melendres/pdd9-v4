@@ -1,0 +1,18 @@
+timestamp,game_round,map,latency,killer_ip,victim_ip,player_ip,suicide_count,deaths_total,killed_by_Player_172.19.137.208,killed_Player_172.19.137.208,killed_by_Player_172.19.114.48,killed_Player_172.19.114.48,killed_by_Player_172.19.119.51,killed_Player_172.19.119.51,killed_by_Player_172.19.116.18,killed_Player_172.19.116.18,killed_by_Player_172.19.120.104,killed_Player_172.19.120.104,killed_by_Player_172.19.117.18,killed_Player_172.19.117.18
+2024-08-22 13:27:10,15,aggressor,50,"Player_flags=8051<UP,POINTOPOINT,RU",Player_138.25.249.94,"Player_flags=8051<UP,POINTOPOINT,RU",0,1,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:27:41,15,aggressor,50,"Player_flags=8051<UP,POINTOPOINT,RU",Player_138.25.249.94,"Player_flags=8051<UP,POINTOPOINT,RU",0,2,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:27:46,15,aggressor,50,"8051<UP,POINTOPOINT,RUNNING,MULTICA",Player_138.25.249.94,"8051<UP,POINTOPOINT,RUNNING,MULTICA",0,3,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:27:59,15,aggressor,50,"Player_flags=8051<UP,POINTOPOINT,RU",Player_138.25.249.94,"Player_flags=8051<UP,POINTOPOINT,RU",0,4,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:28:06,15,aggressor,50,UnnamedPlayer,Player_138.25.249.94,UnnamedPlayer,0,5,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:28:37,15,aggressor,50,UnnamedPlayer,Player_138.25.249.94,UnnamedPlayer,0,6,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:28:59,15,aggressor,50,"Player_flags=8051<UP,POINTOPOINT,RU",Player_138.25.249.94,"Player_flags=8051<UP,POINTOPOINT,RU",0,7,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:29:32,15,aggressor,50,UnnamedPlayer,Player_138.25.249.94,UnnamedPlayer,0,8,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:29:40,15,aggressor,50,"Player_flags=8051<UP,POINTOPOINT,RU",Player_138.25.249.94,"Player_flags=8051<UP,POINTOPOINT,RU",0,9,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:29:50,15,aggressor,50,UnnamedPlayer,Player_138.25.249.94,UnnamedPlayer,0,10,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:29:57,15,aggressor,50,UnnamedPlayer,Player_138.25.249.94,UnnamedPlayer,0,11,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:30:01,15,aggressor,50,"8051<UP,POINTOPOINT,RUNNING,MULTICA",Player_138.25.249.94,"8051<UP,POINTOPOINT,RUNNING,MULTICA",2,12,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:30:08,15,aggressor,50,"8051<UP,POINTOPOINT,RUNNING,MULTICA",Player_138.25.249.94,"8051<UP,POINTOPOINT,RUNNING,MULTICA",2,13,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:30:14,15,aggressor,50,"Player_flags=8051<UP,POINTOPOINT,RU",Player_138.25.249.94,"Player_flags=8051<UP,POINTOPOINT,RU",0,14,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:30:43,15,aggressor,50,"8051<UP,POINTOPOINT,RUNNING,MULTICA",Player_138.25.249.94,"8051<UP,POINTOPOINT,RUNNING,MULTICA",2,15,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:31:11,15,aggressor,50,"Player_flags=8051<UP,POINTOPOINT,RU",Player_138.25.249.94,"Player_flags=8051<UP,POINTOPOINT,RU",0,16,0,0,0,0,0,0,0,0,0,0,0,0
+2024-08-22 13:31:39,15,aggressor,50,Player_138.25.249.94,Player_138.25.249.94,Player_138.25.249.94,1,17,0,0,0,0,0,0,0,0,0,0,0,0
