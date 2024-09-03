@@ -1,0 +1,1 @@
+for f in plotting_processes/*.py; do python "$f"; done
