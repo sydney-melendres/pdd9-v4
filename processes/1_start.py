@@ -10,7 +10,7 @@ def format_datetime(timestamp):
     time_str = datetime_obj.strftime('%H:%M:%S')
     return date_str, time_str
 
-input_path = 'openarena_20240523_11.35.log'
+input_path = 'import/openarena_20240822_12.43.log'
 output_path = 'processes/processed_logs/start.log'
 
 # Read the input file
@@ -24,6 +24,7 @@ with open(output_path, 'w') as output_file:
             # Extract timestamp and format it
             parts = line.split(': ', 1)
             timestamp = parts[0]
+            print(timestamp)
             date_str, time_str = format_datetime(timestamp)
             formatted_line = f"{date_str} {time_str}: {parts[1].strip()}"
             output_file.write(formatted_line + '\n')

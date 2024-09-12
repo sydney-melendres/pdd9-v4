@@ -1,0 +1,1 @@
+for f in plotting_processes_plotly/*.py; do python "$f"; done

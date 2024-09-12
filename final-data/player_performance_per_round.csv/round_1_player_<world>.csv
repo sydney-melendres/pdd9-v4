@@ -1,0 +1,2 @@
+timestamp,game_round,map,latency,event,killer_id,victim_id,weapon_id,killer_ip,victim_ip,weapon,player_id,score,player_ip,points,log_line
+2024-08-22 02:45:41,1,kaos2,0,Kill,1022.0,2.0,20.0,<world>,UnnamedPlayer,MOD_SUICIDE,1022.0,1.0,<world>,1.0,2024-08-22 02:45:41: \x08 \x08Kill: 1022 2 20: <world> killed UnnamedPlayer by MOD_SUICIDE
