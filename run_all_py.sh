@@ -1,1 +1,1 @@
-for f in plotting_processes/*.py; do python "$f"; done
+for f in plotting_processes_plotly/*.py; do python "$f"; done
