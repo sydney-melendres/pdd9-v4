@@ -55,7 +55,12 @@ plt.ylabel('Y coordinate')
 plt.tight_layout()
 
 # Save the scatter plot
-plt.savefig('mouse_positions_scatter.png')
+dir_path = 'plots/' + str(os.path.basename(__file__))
+if not os.path.exists(dir_path):
+      os.makedirs(dir_path)
+print("Directory created successfully!")
+plt.savefig(dir_path + f'/mouse_position_scatter.png')
+plt.close()
 
 # Show the plot (optional, comment out if running on a server without display)
 plt.show()
