@@ -1,7 +1,13 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-import sidebar as sb
 from datetime import datetime
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from sidebar.home.welcome import show_welcome
+from sidebar.demographic.dg import show_demographic
+from sidebar.reports.reports import show_reports
+from sidebar.support.support import show_support
 
 pages = [
     {"name": "Home", "icon": "house"},
@@ -13,15 +19,15 @@ pages = [
 
 def display_page(page_name):
     if page_name == "Home":
-        sb.show_welcome()
+        show_welcome()
     elif page_name == "Demographic":
-        sb.show_demographic()
+        show_demographic()
     elif page_name == "Reports":
-        sb.show_reports()
+        show_reports()
     # elif page_name == "Gaming Experiments":
     #     sb.show_experiments()
     elif page_name == "Support":
-        sb.show_support()
+        show_support()
 
 # Initialize session state
 if 'current_page' not in st.session_state:

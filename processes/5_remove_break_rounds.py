@@ -3,8 +3,8 @@ import pandas as pd
 # Remove rows related to kaos maps
 # Adjusts game round counter
 
-input_path = 'final-data/full.csv'
-output_path = 'final-data/remove_break_rounds.csv'
+input_path = 'data/full.csv'
+output_path = 'data/remove_break_rounds.csv'
 
 # Read the CSV file
 df = pd.read_csv(input_path)

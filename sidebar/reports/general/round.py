@@ -5,13 +5,12 @@ import altair as alt
 def show_round():
 
     def load_data():
-        return pd.read_csv("final-data/round_summary_adjusted.csv")
+        return pd.read_csv("data/round_summary_adjusted.csv")
 
     def checkbox_group(label, options, key_prefix, columns=3):
-        cols = st.columns(columns)
         selected = []
         for i, option in enumerate(options):
-            if cols[i % columns].checkbox(str(option), value=True, key=f"{key_prefix}_{option}"):
+            if st.sidebar.checkbox(str(option), value=True, key=f"{key_prefix}_{option}"):
                 selected.append(option)
         return selected
 
@@ -66,31 +65,31 @@ def show_round():
     # Load data
     df = load_data()
 
-    st.title("Round Scoreboard")
+    st.title("Round")
 
     # View selection
-    st.subheader("Select View")
-    view_option = st.radio(
+    st.sidebar.subheader("Select View")
+    view_option = st.sidebar.radio(
         "Choose a view option",
         ["All Rounds", "By Round", "By Map"],
-        index=0
+        index=0, label_visibility="collapsed"
     )
 
     if view_option == "All Rounds":
         filtered_df = df
     elif view_option == "By Round":
-        st.subheader("Select Round")
-        selected_round = st.selectbox("Choose a round", sorted(df['game_round'].unique()))
+        st.sidebar.subheader("Select Round")
+        selected_round = st.sidebar.selectbox("Choose a round", sorted(df['game_round'].unique()))
         filtered_df = df[df['game_round'] == selected_round]
     else:  # By Map
-        st.subheader("Select Map")
-        selected_map = st.radio("Choose a map", sorted(df['map'].unique()))
+        st.sidebar.subheader("Select Map")
+        selected_map = st.sidebar.radio("Choose a map", sorted(df['map'].unique()))
         filtered_df = df[df['map'] == selected_map]
 
     # Players checkboxes
-    st.subheader("Select Players")
+    st.sidebar.subheader("Select Players")
     player_options = sorted(df['player_ip'].unique())
-    selected_players = checkbox_group("Choose players to display", player_options, "player", columns=3)
+    selected_players = checkbox_group("Choose players to display", player_options, "player")
 
     # Apply player filter
     filtered_df = filtered_df[filtered_df['player_ip'].isin(selected_players)]
@@ -192,7 +191,3 @@ def show_round():
 
     else:
         st.write("No data available for the selected view and players.")
-
-    # Display raw data
-    st.subheader("Raw Data")
-    st.dataframe(filtered_df)

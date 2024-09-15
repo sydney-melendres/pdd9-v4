@@ -2,8 +2,8 @@ import pandas as pd
 
 # Create summary dataframes for each round
 
-input_path = 'final-data/ignore_suicides.csv'
-output_path = 'final-data/round_summary_adjusted.csv'
+input_path = 'data/ignore_suicides.csv'
+output_path = 'data/round_summary_adjusted.csv'
 
 # Mapping of player IDs to IP addresses
 player_ip_map = {

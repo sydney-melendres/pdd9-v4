@@ -1,0 +1,9 @@
+Add st.expander() under each report to either explain/justify the use of this graph and what it aims to capture.
+Add a trained model to analyse our graph/s.
+Add a chat bot to explain our analysis.
+
+Disable/Enable Demographics sidebar menu items once files are uploaded only.
+
+Check that pathnames are correct
+
+Refactor code to use styles.css

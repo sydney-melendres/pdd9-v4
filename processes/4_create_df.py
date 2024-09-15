@@ -2,7 +2,7 @@ import pandas as pd
 import re
 
 input_path = 'processes/processed_logs/start_again_twice.log'
-output_path = 'final-data/full.csv'
+output_path = 'data/full.csv'
 
 # Read the log file
 with open(input_path, 'r') as file:

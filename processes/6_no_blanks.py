@@ -1,7 +1,7 @@
 import pandas as pd
 
-input_path = 'final-data/remove_break_rounds.csv'
-output_path = 'final-data/no_blanks.csv'
+input_path = 'data/remove_break_rounds.csv'
+output_path = 'data/no_blanks.csv'
 
 df = pd.read_csv(input_path)
 

@@ -6,12 +6,15 @@ def show_latency():
     @st.cache_data
     def load_data():
         try:
-            return pd.read_csv('final-data/round_summary_adjusted.csv')
+            return pd.read_csv('data/round_summary_adjusted.csv')
         except Exception as e:
             st.error(f"Error loading the data: {str(e)}")
             return None
 
     df = load_data()
+    
+    st.title("Latency")
+
 
     if df is not None:
         def generate_statistics(df):
@@ -87,13 +90,6 @@ def show_latency():
         )
 
         st.plotly_chart(fig, use_container_width=True)
-
-        # Display statistics for selected latencies
-        st.subheader('Statistics for Selected Latencies')
-        for latency in latency_values:
-            if selected_latencies[latency]:
-                st.write(f'Latency {latency}')
-                st.dataframe(result_dfs[latency])
 
     else:
         st.error("Cannot proceed with analysis due to data loading error.")

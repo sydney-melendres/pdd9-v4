@@ -1,8 +1,8 @@
 import pandas as pd
 import os
 
-input_path = 'final-data/player_performance.csv'
-output_dir = 'final-data/player_performance_metadata_summary.csv'
+input_path = 'data/player_performance.csv'
+output_dir = 'data/player_performance_metadata_summary.csv'
 
 # Read the CSV file
 df = pd.read_csv(input_path)

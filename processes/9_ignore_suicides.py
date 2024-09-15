@@ -6,8 +6,8 @@ import pandas as pd
 
 # Create summary dataframes for each round
 
-input_path = 'final-data/no_blanks.csv'
-output_path = 'final-data/ignore_suicides.csv'
+input_path = 'data/no_blanks.csv'
+output_path = 'data/ignore_suicides.csv'
 
 # Load the CSV file
 df = pd.read_csv(input_path)

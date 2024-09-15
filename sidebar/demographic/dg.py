@@ -80,7 +80,7 @@ def show_demographic():
             st.error(f"An error occurred while reading the file: {str(e)}")
             return None
 
-    st.title('Demographic Overview')
+    st.title('Demographic')
 
     df = load_data()
 

@@ -1,31 +1,22 @@
 import streamlit as st
-import sidebar as sb
+from .credits import show_credits
+from .how_to_navigation import show_navigation
+from .how_to_read_log import show_read_logs
+from .how_to_participate import show_how_to_participate
 
 def show_support():
-        
-    # Create the Table of Contents at the top of the screen
     st.title("Support")
-    st.markdown("""
-    ##### [How to Navigate the Site](#how-to-navigate-the-site)
-    """)
-    st.markdown("""
-    ##### [How to Read the Game Logs](#how-to-read-the-game-logs)
-    """)
-    st.markdown("""
-    ##### [Credits](#credits)
-    """)
 
-    # Add some spacing between the ToC and sections
-    st.markdown("---")
+    with st.expander("🧭 How to Navigate the Site"):
+        show_navigation()
+        
+    with st.expander("🙋🏽 How To Participate In The Experiment"):
+        show_how_to_participate()
 
-    st.markdown("## How to navigate the site")
-    sb.show_navigation()
-    st.markdown("---")
-    
-    st.markdown("## How to read the game logs")
-    sb.show_read_logs()
-    st.markdown("---")
+    with st.expander("📜 How to Read the Game Logs"):
+        show_read_logs()
 
-    st.markdown("## Credits")
-    sb.show_credits()
-    
+    with st.expander("👏 Credits"):
+        show_credits()
+
+    st.info("Click on each section above to expand or collapse its content.")

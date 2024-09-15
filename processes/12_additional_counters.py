@@ -3,8 +3,8 @@ import subprocess
 
 # Create summary dataframes for each round
 
-input_path = 'final-data/ignore_suicides.csv'
-output_path = 'final-data/player_performance.csv'
+input_path = 'data/ignore_suicides.csv'
+output_path = 'data/player_performance.csv'
 
 # Load the input CSV file
 df = pd.read_csv(input_path)
