@@ -3,10 +3,22 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import os 
+import re
 
 def show_demographic():
 
-    csv_file = 'survey-data/demographics.csv'
+    # csv_file = 'survey-data/demographics.csv'
+
+    def find_csv_file():
+        import_dir = os.path.join('app', 'import')
+        for file in os.listdir(import_dir):
+            if re.match(r'.*\.csv$', file):
+                return os.path.join(import_dir, file)
+        return None
+    
+    csv_file = find_csv_file()
+
 
     def preprocess_data(df):
         for column in df.columns:
@@ -67,6 +79,24 @@ def show_demographic():
 
     @st.cache_data
     def load_data():
+        try:
+            df = pd.read_csv(csv_file)
+            return preprocess_data(df)
+        except FileNotFoundError:
+            st.error(f"File not found: {csv_file}")
+            return None
+        except pd.errors.EmptyDataError:
+            st.error(f"The file {csv_file} is empty.")
+            return None
+        except Exception as e:
+            st.error(f"An error occurred while reading the file: {str(e)}")
+            return None
+
+    @st.cache_data
+    def load_data():
+        if csv_file is None:
+            st.error("No CSV file found in the app/import directory.")
+            return None
         try:
             df = pd.read_csv(csv_file)
             return preprocess_data(df)

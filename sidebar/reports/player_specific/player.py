@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-import streamlit_toggle as tog
 
 def show_individual_player():
     # File paths
@@ -65,20 +64,27 @@ def show_individual_player():
     # Create a container for the scrollable area
     player_container = st.container()
     st.sidebar.subheader("Players")
-    option_player = st.selectbox("Select a Player", [""] + list(select_player), index=1)
+    option_player = st.sidebar.radio("Select a Player", [""] + list(select_player), index=1, label_visibility="collapsed")
 
     # Calculate key statistics
     if option_player:
         player_pts = sb[sb['player_ip'] == option_player]
         player_deaths = df[df['victim_ip'] == option_player]
         
+        # Merge the data for combined analysis
+        combined_data = pd.merge(player_pts, player_deaths.groupby('game_round')['deaths_total'].sum().reset_index(), 
+                                 on='game_round', how='outer').fillna(0)
+        
         # Highest score in a single round
-        highest_score = player_pts['score'].max()
-        highest_score_round = player_pts.loc[player_pts['score'].idxmax(), 'game_round']
+        highest_score_round = combined_data.loc[combined_data['score'].idxmax()]
+        
+        # Most deaths in a single round
+        most_deaths_round = combined_data.loc[combined_data['deaths_total'].idxmax()]
         
         # Best map (highest accumulated points)
-        best_map = player_pts.groupby('map')['score'].sum().idxmax()
-        best_map_score = player_pts.groupby('map')['score'].sum().max()
+        best_map_data = player_pts.groupby('map')['score'].sum()
+        best_map = best_map_data.idxmax()
+        best_map_score = best_map_data.max()
         
         # Player killed by most
         killer_counts = player_deaths['killer_ip'].value_counts()
@@ -86,45 +92,63 @@ def show_individual_player():
         top_killer_count = killer_counts.iloc[0] if not killer_counts.empty else 0
 
         # Display key statistics
+        st.header(f"{option_player} Highlights")
         col1, col2, col3 = st.columns(3)
-        with col1:
-            st.metric("Highest Score", f"{highest_score}")
-            st.write(f"Round {highest_score_round}")
-        with col2:
-            st.metric("Best Map", f"{best_map}")
-            st.write(f"{best_map_score} pts")
-        with col3:
-            st.metric("Most Killed By", f"{top_killer}")
-            st.write(f"{top_killer_count} times")
 
-    # Toggle switch for view selection
-    is_combined = tog.st_toggle_switch(
-        label="Combined View",
-        key="combined_view",
-        default_value=False,
-        label_after=False,
-        inactive_color='#D3D3D3',
-        active_color="#11567f",
-        track_color="#29B5E8"
+        with col1:
+            st.subheader("Best Performance")
+            st.metric("Highest Score", f"{highest_score_round['score']:.0f}")
+            st.metric("in Round", f"{highest_score_round['game_round']}")
+            st.metric("on Map", f"{highest_score_round['map']}")
+            st.metric("with Deaths", f"{highest_score_round['deaths_total']:.0f}")
+
+        with col2:
+            st.subheader("Worst Performance")
+            st.metric("Most Deaths", f"{most_deaths_round['deaths_total']:.0f}")
+            st.metric("in Round", f"{most_deaths_round['game_round']}")
+            st.metric("on Map", f"{most_deaths_round['map']}")
+            st.metric("with Score", f"{most_deaths_round['score']:.0f}")
+
+        with col3:
+            st.subheader("Overall Statistics")
+            st.metric("Best Map", best_map)
+            st.metric("Total Score on Best Map", f"{best_map_score:.0f}")
+            st.metric("Most Killed By", top_killer)
+            st.metric("Times Killed", f"{top_killer_count}")
+
+            
+    st.sidebar.subheader("View")
+    view_option = st.sidebar.radio(
+        "Select View",
+        ("Combined Graph", "Split Graphs"),
+        label_visibility="collapsed"
     )
+    
+    st.sidebar.subheader("Graph Background")
+    background_option = st.sidebar.radio(
+        "Show map detail",
+        ("Hide", "Unhide"),
+        label_visibility="collapsed"
+)
 
     # Function to add background colors based on map type
     def add_map_backgrounds(fig, data):
-        for i, row in data.iterrows():
-            if row['map'] == 'aggressor':
-                color = 'rgba(255, 182, 193, 0.3)'  # Light pink
-            elif row['map'] == 'wrackdm17':
-                color = 'rgba(173, 216, 230, 0.3)'  # Light blue
-            else:  # kaos2
-                color = 'rgba(144, 238, 144, 0.3)'  # Light green
-            
-            fig.add_vrect(
-                x0=row['game_round'] - 0.5,
-                x1=row['game_round'] + 0.5,
-                fillcolor=color,
-                layer="below",
-                line_width=0,
-            )
+        if background_option == "Unhide":
+            for i, row in data.iterrows():
+                if row['map'] == 'aggressor':
+                    color = 'rgba(255, 182, 193, 0.3)'  # Light pink
+                elif row['map'] == 'wrackdm17':
+                    color = 'rgba(173, 216, 230, 0.3)'  # Light blue
+                else:  # kaos2
+                    color = 'rgba(144, 238, 144, 0.3)'  # Light green
+                
+                fig.add_vrect(
+                    x0=row['game_round'] - 0.5,
+                    x1=row['game_round'] + 0.5,
+                    fillcolor=color,
+                    layer="below",
+                    line_width=0,
+                )
         return fig
 
     # Create two columns for the charts
@@ -136,8 +160,8 @@ def show_individual_player():
     player_deaths = df[df['victim_ip'] == option_player].groupby('game_round')['deaths_total'].sum().reset_index()
     player_deaths = pd.merge(player_deaths, player_pts[['game_round', 'map']], on='game_round', how='left')
 
-    if is_combined:
-        # Combined view
+    if view_option == "Combined Graph":
+        # Combined view code
         if not player_pts.empty and not player_deaths.empty:
             # Merge the two dataframes
             combined_data = pd.merge(player_pts, player_deaths, on=['game_round', 'map'], how='outer').fillna(0)
@@ -171,12 +195,11 @@ def show_individual_player():
             )
             
             st.plotly_chart(fig, use_container_width=True)
-            
-            # Display combined sorted table
-            combined_data_sorted = combined_data.sort_values(by=['score', 'deaths_total'], ascending=[False, True])
-            # st.write(combined_data_sorted)
+
     else:
-        # Separate views
+        # Separate views code
+        col1, col2 = st.columns(2)
+        
         with col1:
             if not player_pts.empty:
                 fig = go.Figure()
@@ -199,6 +222,7 @@ def show_individual_player():
                 st.plotly_chart(fig, use_container_width=True)
                 
                 player_pts_sorted = player_pts.sort_values(by='score', ascending=False)
+                st.subheader("Most Score in a Round")
                 st.write(player_pts_sorted)
             
         with col2:
@@ -223,4 +247,5 @@ def show_individual_player():
                 st.plotly_chart(fig, use_container_width=True)
                 
                 player_deaths_sorted = player_deaths.sort_values(by='deaths_total', ascending=False)
+                st.subheader("Most Deaths in a Round")
                 st.write(player_deaths_sorted)

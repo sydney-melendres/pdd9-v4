@@ -13,7 +13,6 @@ pages = [
     {"name": "Home", "icon": "house"},
     {"name": "Demographic", "icon": "people"},
     {"name": "Reports", "icon": "clipboard-data"},
-    # {"name": "Gaming Experiments", "icon": "controller"},
     {"name": "Support", "icon": "question-circle"}
 ]
 
@@ -24,8 +23,6 @@ def display_page(page_name):
         show_demographic()
     elif page_name == "Reports":
         show_reports()
-    # elif page_name == "Gaming Experiments":
-    #     sb.show_experiments()
     elif page_name == "Support":
         show_support()
 

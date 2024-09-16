@@ -27,7 +27,7 @@ def show_reports():
         # Select box for General category
         general_option = st.selectbox(
             "Select analysis type",
-            options=["Latency", "Round", "All Players Performance"],
+            options=["Latency", "Round", "Player Performance"],
             index=0  # Default to Latency
         )
 
@@ -35,7 +35,7 @@ def show_reports():
             general_latency.show_latency()
         elif general_option == "Round":
             general_round.show_round()
-        elif general_option == "All Players Performance":
+        elif general_option == "Player Performance":
             show_all_players()
 
     elif selected_category == "Player-specific":

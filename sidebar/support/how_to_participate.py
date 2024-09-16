@@ -21,7 +21,7 @@ def show_event_experiments():
     st.header("Large Event Experiments")
 
     # Add poster image
-    poster_image = Image.open('Images/largeevent.png')
+    poster_image = Image.open('assets/largeevent.png')
     st.image(poster_image, caption='Event Poster', use_column_width=True)
 
     # Upcoming Events
@@ -93,7 +93,7 @@ def show_uts_experiments():
     # Main title
     st.header("UTS Campus Experiments")
     # Add poster image
-    poster_image = Image.open('Images/utsevent.png')
+    poster_image = Image.open('assets/utsevent.png')
     st.image(poster_image, caption='Event Poster', use_column_width=True)
 
     # Subtitle
