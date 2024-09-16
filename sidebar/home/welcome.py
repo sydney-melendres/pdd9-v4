@@ -4,26 +4,7 @@ import time
 
 st.set_page_config(layout="wide", page_title="Quake 3 Analysis Dashboard", page_icon="🎮")
 
-def display_temporary_message(message, type='info', duration=5):
-    placeholder = st.empty()
-    getattr(placeholder, type)(message)
-    time.sleep(duration)
-    placeholder.empty()
-
-def display_selected_players(selected_players, df):
-    if not selected_players:
-        st.info("No players selected. Please choose players from the list above.")
-        return
-
-    st.subheader("Selected Players")
-    
-    for player in selected_players:
-        with st.expander(f"**Player:** {player}", expanded=True):
-            player_data = df[df['player_ip'] == player]
-            st.markdown(f"**Total Games:** {player_data['game_round'].nunique()}")
-
 def show_welcome():
-    # Custom CSS for minimal styling
     st.markdown("""
     <style>
     .title {
@@ -42,7 +23,6 @@ def show_welcome():
     </style>
     """, unsafe_allow_html=True)
 
-    # Header with logos
     col1, col2, col3, col4 = st.columns([0.75, 3.5, 0.75, 0.75])
         
     with col1:
@@ -70,4 +50,9 @@ def show_welcome():
     """)
 
     if st.button("Upload", key="upload_files"):
-        st.write("slay")
+        uploaded_files = st.file_uploader(
+            "Choose a CSV file", accept_multiple_files=True
+        )
+        for uploaded_file in uploaded_files:
+            bytes_data = uploaded_file.read()
+    
