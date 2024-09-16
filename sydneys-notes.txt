@@ -7,3 +7,22 @@ Disable/Enable Demographics sidebar menu items once files are uploaded only.
 Check that pathnames are correct
 
 Refactor code to use styles.css
+
+Files that are uploaded:
+- log
+- demographs
+- mouse/keyboard input
+- wireshark
+
+To call -> use search:Player_ID
+
+
+Is thee a script that collectively:
+- starts/ends the game
+- starts/ends the movement recording
+- starts/ends the wireshark capture
+- exports files to one folder
+- uses standardised naming convention filename export (easier to call when parsed)
+
+Note:
+```12_additional_counters.py``` contains deprecated pandas features.

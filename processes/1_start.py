@@ -1,7 +1,7 @@
 import re
 from datetime import datetime
-import subprocess
-import time
+import os
+import glob
 
 # Define the format_datetime function
 def format_datetime(timestamp):
@@ -10,8 +10,18 @@ def format_datetime(timestamp):
     time_str = datetime_obj.strftime('%H:%M:%S')
     return date_str, time_str
 
-input_path = 'openarena_20240523_11.35.log'
-output_path = 'processes/processed_logs/start.log'
+# Find the input file
+import_dir = 'app/import/'
+log_files = glob.glob(os.path.join(import_dir, '*.log'))
+
+if not log_files:
+    raise FileNotFoundError("No .log file found in the import directory.")
+
+if len(log_files) > 1:
+    print("Warning: Multiple .log files found. Using the first one.")
+
+input_path = log_files[0]
+output_path = 'processes/processed_logs_v2/start.log'
 
 # Read the input file
 with open(input_path, 'r') as file:
@@ -36,3 +46,6 @@ with open(output_path, 'w') as output_file:
             output_file.write(formatted_line + '\n')
         # else:
         #     print(f"No match: {line.strip()}")
+
+print(f"Processed log file: {input_path}")
+print(f"Output saved to: {output_path}")

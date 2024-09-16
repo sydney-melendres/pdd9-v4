@@ -11,7 +11,9 @@ scripts = [
     "processes/8_round_score_summary.py",
     "processes/9_ignore_suicides.py",
     "processes/10_player_performance_per_round_adjusted.py",
-    "processes/11_round_score_summary_suicide_adjusted.py"
+    "processes/11_round_score_summary_after_adjusted.py",
+    "processes/12_additional_counters.py",
+    "processes/13_additional_counters_round_summary.py"
 ]
 
 for script in scripts:

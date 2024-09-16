@@ -19,8 +19,8 @@ def format_timestamp(timestamp):
     time_str = datetime_obj.strftime('%H:%M:%S')
     return f"{date_str} {time_str}"
 
-input_path = 'processes/processed_logs/start.log'
-output_path = 'processes/processed_logs/start_again.log'
+input_path = 'processes/processed_logs_v2/start.log' ##path
+output_path = 'processes/processed_logs_v2/start_again.log' ##path
 
 # Read the input file
 with open(input_path, 'r') as file:

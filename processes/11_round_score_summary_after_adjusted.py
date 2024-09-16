@@ -2,24 +2,17 @@ import pandas as pd
 
 # Create summary dataframes for each round
 
-input_path = 'data/ignore_suicides.csv'
-output_path = 'data/round_summary_adjusted.csv'
-
-# Mapping of player IDs to IP addresses
-player_ip_map = {
-    1: 'Player_172.19.137.208',
-    2: 'Player_172.19.114.48',
-    3: 'Player_172.19.119.51',
-    4: 'Player_172.19.116.18',
-    5: 'Player_172.19.120.104',
-    6: 'Player_172.19.117.18'
-}
+input_path = 'data_v2/ignore_suicides.csv' ##path
+output_path = 'data_v2/round_summary_adjusted.csv' ##path
 
 # Read the CSV file
 df = pd.read_csv(input_path)
 
-# Unique player IDs to include in the summary
-player_ids = list(range(1, 7))
+# Create a mapping of player_id to player_ip
+player_ip_map = df[['player_id', 'player_ip']].drop_duplicates().set_index('player_id')['player_ip'].to_dict()
+
+# Get unique player IDs from the data
+player_ids = df['player_id'].unique()
 
 # Initialize a list to store the summary data
 summary_data = []
@@ -30,7 +23,7 @@ for game_round, group in df.groupby('game_round'):
     current_latency = group['latency'].iloc[0] if pd.notna(group['latency'].iloc[0]) else ''
     
     for player_id in player_ids:
-        player_ip = player_ip_map[player_id]
+        player_ip = player_ip_map.get(player_id, f'Unknown_IP_{player_id}')
         player_data = group[group['player_id'] == player_id]
         if not player_data.empty:
             last_record = player_data.iloc[-1]

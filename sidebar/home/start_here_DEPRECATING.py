@@ -125,7 +125,7 @@ def display_selected_players(selected_players, df):
 
 if st.session_state.operation_completed:
     st.subheader('Player Analysis')
-    metadata = "data/player_performance.csv"
+    metadata = "data_v2/player_performance.csv"
     if os.path.exists(metadata):
         df = pd.read_csv(metadata)
         unique_players = df['player_ip'].unique()

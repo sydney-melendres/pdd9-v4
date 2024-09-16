@@ -5,7 +5,7 @@ import altair as alt
 def show_round():
 
     def load_data():
-        return pd.read_csv("data/round_summary_adjusted.csv")
+        return pd.read_csv("data_v2/round_summary_adjusted.csv")  ##path
 
     def checkbox_group(label, options, key_prefix, columns=3):
         selected = []

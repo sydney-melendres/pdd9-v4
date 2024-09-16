@@ -1,0 +1,8 @@
+timestamp,game_round,map,latency,killer_id,victim_id,killer_ip,victim_ip,player_id,player_ip,suicide_count,deaths_total,killed_by_Player_1022.0,killed_Player_1022.0,killed_by_Player_1.0,killed_Player_1.0,killed_by_Player_2.0,killed_Player_2.0,killed_by_Player_0.0,killed_Player_0.0,killed_by_Player_3.0,killed_Player_3.0
+2024-09-05 11:55:16,4.0,kaos2,,2.0,0.0,Player_138.25.249.94,Player_138.25.249.93,2.0,Player_138.25.249.94,2,1,0,0,0,1,1,0,0,1,0,0
+2024-09-05 11:56:40,4.0,kaos2,0.0,2.0,0.0,Player_138.25.249.94,Player_138.25.249.93,2.0,Player_138.25.249.94,7,2,0,0,0,3,2,2,0,2,0,0
+2024-09-05 11:53:14,4.0,kaos2,,2.0,1.0,Player_138.25.249.94,Player_138.25.249.38,2.0,Player_138.25.249.94,1,1,0,0,0,1,1,0,0,0,0,0
+2024-09-05 11:55:45,4.0,kaos2,,2.0,1.0,Player_138.25.249.94,Player_138.25.249.38,2.0,Player_138.25.249.94,4,2,0,0,0,2,2,1,0,1,0,0
+2024-09-05 11:56:13,4.0,kaos2,,2.0,1.0,Player_138.25.249.94,Player_138.25.249.38,2.0,Player_138.25.249.94,6,3,0,0,0,3,3,2,0,1,0,0
+2024-09-05 11:55:33,4.0,kaos2,,2.0,2.0,Player_138.25.249.94,Player_138.25.249.94,2.0,Player_138.25.249.94,3,4,0,0,2,1,1,1,1,1,0,0
+2024-09-05 11:56:12,4.0,kaos2,,2.0,2.0,Player_138.25.249.94,Player_138.25.249.94,2.0,Player_138.25.249.94,5,5,0,0,2,2,2,2,1,1,0,0

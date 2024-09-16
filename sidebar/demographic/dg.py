@@ -8,7 +8,7 @@ import re
 
 def show_demographic():
 
-    # csv_file = 'survey-data/demographics.csv'
+    # csv_file = 'survey-data_v2/demographics.csv'
 
     def find_csv_file():
         import_dir = os.path.join('app', 'import')

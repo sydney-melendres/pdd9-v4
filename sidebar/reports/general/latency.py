@@ -6,7 +6,7 @@ def show_latency():
     @st.cache_data
     def load_data():
         try:
-            return pd.read_csv('data/round_summary_adjusted.csv')
+            return pd.read_csv('data_v2/round_summary_adjusted.csv') ##path
         except Exception as e:
             st.error(f"Error loading the data: {str(e)}")
             return None
