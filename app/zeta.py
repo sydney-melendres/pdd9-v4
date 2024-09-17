@@ -3,7 +3,11 @@ from streamlit_option_menu import option_menu
 from datetime import datetime
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from pathlib import Path
+
+# Add the project root directory to Python's module search path
+project_root = str(Path(__file__).resolve().parent.parent)
+sys.path.insert(0, project_root)
 from sidebar.home.welcome import show_welcome
 from sidebar.demographic.dg import show_demographic
 from sidebar.reports.reports import show_reports

@@ -2,9 +2,12 @@ Add st.expander() under each report to either explain/justify the use of this gr
 Add a trained model to analyse our graph/s.
 Add a chat bot to explain our analysis.
 
+Add Beau's artefacts into player.py page.
+
 Disable/Enable Demographics sidebar menu items once files are uploaded only.
 
 Check that pathnames are correct
+Check that list of dependencies in the reset.py file is correct - aka includes app/import path
 
 Refactor code to use styles.css
 

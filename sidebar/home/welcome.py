@@ -1,6 +1,8 @@
 import streamlit as st
 from PIL import Image
 import time
+import os
+import subprocess
 
 st.set_page_config(layout="wide", page_title="Quake 3 Analysis Dashboard", page_icon="🎮")
 
@@ -49,10 +51,31 @@ def show_welcome():
     3. **Visualisation**: The processed data is transformed into interactive graphs and charts.
     """)
 
+    uploaded_files = st.file_uploader("Choose CSV files", accept_multiple_files=True, key="file_uploader")
+
     if st.button("Upload", key="upload_files"):
-        uploaded_files = st.file_uploader(
-            "Choose a CSV file", accept_multiple_files=True
-        )
-        for uploaded_file in uploaded_files:
-            bytes_data = uploaded_file.read()
-    
+        if uploaded_files:
+            for uploaded_file in uploaded_files:
+                bytes_data = uploaded_file.read()
+                st.write(f"Filename: {uploaded_file.name}")
+                
+                # Save the file to the 'app/import' directory
+                save_path = os.path.join('app', 'import', uploaded_file.name)
+                with open(save_path, 'wb') as f:
+                    f.write(bytes_data)
+                st.success(f"File {uploaded_file.name} has been uploaded successfully!")
+        else:
+            st.warning("Please select files to upload.")
+
+    if st.button("Reset", key="reset"):
+        try:
+            # Run the reset script
+            result = subprocess.run(['python', 'processes/reset.py'], capture_output=True, text=True, check=True)
+            st.success("Reset completed successfully!")
+            if result.stdout:
+                st.info(f"Reset script output: {result.stdout}")
+        except subprocess.CalledProcessError as e:
+            st.error(f"An error occurred during reset: {e.stderr}")
+
+if __name__ == "__main__":
+    show_welcome()
