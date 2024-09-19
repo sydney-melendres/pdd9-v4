@@ -20,7 +20,7 @@ There are 2 ways to run the app:
 
 1. Deploy zeta.py into a website hosted by Streamlit.
 
-2. On command line, run ```Streamlit run app/zeta.py```
+2. On command line, run ```streamlit run app/zeta.py```
 
 - Make sure you have Streamlit installed in your environment. If not, you can install it
 
