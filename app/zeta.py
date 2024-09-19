@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 from datetime import datetime
+import importlib
 import sys
 import os
 from pathlib import Path
@@ -8,10 +9,16 @@ from pathlib import Path
 # Add the project root directory to Python's module search path
 project_root = str(Path(__file__).resolve().parent.parent)
 sys.path.insert(0, project_root)
-from sidebar.home.welcome import show_welcome
-from sidebar.demographic.dg import show_demographic
-from sidebar.reports.reports import show_reports
-from sidebar.support.support import show_support
+
+# Function to dynamically import modules
+def import_module(module_name):
+    return importlib.import_module(f"sidebar.{module_name}")
+
+# Dynamically import required modules
+home_module = import_module("home.welcome")
+demographic_module = import_module("demographic.dg")
+reports_module = import_module("reports.reports")
+support_module = import_module("support.support")
 
 pages = [
     {"name": "Home", "icon": "house"},
@@ -22,13 +29,13 @@ pages = [
 
 def display_page(page_name):
     if page_name == "Home":
-        show_welcome()
+        home_module.show_welcome()
     elif page_name == "Demographic":
-        show_demographic()
+        demographic_module.show_demographic()
     elif page_name == "Reports":
-        show_reports()
+        reports_module.show_reports()
     elif page_name == "Support":
-        show_support()
+        support_module.show_support()
 
 # Initialize session state
 if 'current_page' not in st.session_state:
