@@ -27,7 +27,7 @@ def show_analysis():
     @st.cache_data
     def load_mouse_data(ip_address):
         try:
-            filename = f'{ip_address}_activity_data.csv'
+            filename = f'app/import/activity_data/{ip_address}_activity_data.csv'
             return pd.read_csv(filename)
         except Exception as e:
             st.error(f"Error loading the mouse movement data for IP {ip_address}: {str(e)}")
