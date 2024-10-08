@@ -6,9 +6,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Define variables by reading specific folder paths from the .env file
-LOG_FOLDER = os.getenv('LOG_FOLDER')
-PROCESSED_DATA_FOLDER = os.getenv('PROCESSED_DATA_FOLDER')
-RAW_DATA_FOLDER = os.getenv('RAW_DATA_FOLDER')
+LOG_FOLDER = os.getenv('LOG_FOLDER', 'processes')
+PROCESSED_DATA_FOLDER = os.getenv('PROCESSED_DATA_FOLDER', 'final-data')
+RAW_DATA_FOLDER = os.getenv('RAW_DATA_FOLDER', 'app')
 
 # Store them in a dictionary (optional, if you need dynamic access)
 FOLDER_PATHS = {
