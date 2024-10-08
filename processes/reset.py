@@ -28,8 +28,8 @@ def reset_directories(directories):
 
 # List of directories to reset
 directories_to_reset = [
-    'processes/processed_logs_v2',
-    'data_v2'
+    f'{LOG_FOLDER}',
+    f'{PROCESSED_DATA_FOLDER}'
     'app/import'
 ]
 

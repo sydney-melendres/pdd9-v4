@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
+from config import LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER
 import plotly.express as px
 import plotly.graph_objects as go
 import os 

@@ -1,11 +1,12 @@
 import streamlit as st
 import pandas as pd
+from config import LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER
 import altair as alt
 
 def show_round():
 
     def load_data():
-        return pd.read_csv("data_v2/round_summary_adjusted.csv")  ##path
+        return pd.read_csv(f"{PROCESSED_DATA_FOLDER}/round_summary_adjusted.csv")  ##path
 
     def checkbox_group(label, options, key_prefix, columns=3):
         selected = []

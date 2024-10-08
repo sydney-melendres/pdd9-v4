@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from config import LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER
 import numpy as np
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
@@ -18,7 +19,7 @@ def show_analysis():
     @st.cache_data
     def load_data():
         try:
-            player_performance = pd.read_csv('data_v2/player_performance.csv', parse_dates=['timestamp'])
+            player_performance = pd.read_csv(f'{PROCESSED_DATA_FOLDER}/player_performance.csv', parse_dates=['timestamp'])
             return player_performance
         except Exception as e:
             st.error(f"Error loading the player performance data: {str(e)}")

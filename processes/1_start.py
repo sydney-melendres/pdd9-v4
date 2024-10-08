@@ -2,6 +2,7 @@ import re
 from datetime import datetime
 import os
 import glob
+from config import LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER
 
 # Define the format_datetime function
 def format_datetime(timestamp):
@@ -11,7 +12,7 @@ def format_datetime(timestamp):
     return date_str, time_str
 
 # Find the input file
-import_dir = 'app/import/'
+import_dir = RAW_DATA_FOLDER
 log_files = glob.glob(os.path.join(import_dir, '*.log'))
 
 if not log_files:
@@ -21,7 +22,7 @@ if len(log_files) > 1:
     print("Warning: Multiple .log files found. Using the first one.")
 
 input_path = log_files[0]
-output_path = 'processes/processed_logs_v2/start.log'
+output_path = f'{LOG_FOLDER}/start.log'
 
 # Read the input file
 with open(input_path, 'r') as file:

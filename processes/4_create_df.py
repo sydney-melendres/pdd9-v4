@@ -1,8 +1,9 @@
 import pandas as pd
+from config import LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER
 import re
 
-input_path = 'processes/processed_logs_v2/start_again_twice.log' ##path
-output_path = 'data_v2/full.csv' ##path
+input_path = f'{LOG_FOLDER}/start_again_twice.log' ##path
+output_path = f'{PROCESSED_DATA_FOLDER}/full.csv' ##path
 
 # Read the log file
 with open(input_path, 'r') as file:

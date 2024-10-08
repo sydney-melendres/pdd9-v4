@@ -1,11 +1,12 @@
 import streamlit as st
 import pandas as pd
+from config import LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import streamlit_toggle as tog
 
-input_path = "data_v2/player_performance.csv" ##path
-sb_summary = "data_v2/round_summary_adjusted.csv" ##path
+input_path = f"{PROCESSED_DATA_FOLDER}/player_performance.csv" ##path
+sb_summary = f"{PROCESSED_DATA_FOLDER}/round_summary_adjusted.csv" ##path
 
 # Load data
 @st.cache_data
@@ -89,8 +90,8 @@ def show_all_players():
     # Load data
     @st.cache_data
     def load_data():
-        df = pd.read_csv("data_v2/player_performance.csv")
-        sb = pd.read_csv("data_v2/round_summary_adjusted.csv")
+        df = pd.read_csv(f"{PROCESSED_DATA_FOLDER}/player_performance.csv")
+        sb = pd.read_csv(f"{PROCESSED_DATA_FOLDER}/round_summary_adjusted.csv")
         return df, sb
 
     df, sb = load_data()

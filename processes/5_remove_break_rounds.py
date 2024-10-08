@@ -1,10 +1,11 @@
 import pandas as pd
+from config import LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER
 
 # Remove rows related to kaos maps
 # Adjusts game round counter
 
-input_path = 'data_v2/full.csv' ##path
-output_path = 'data_v2/remove_break_rounds.csv' ##path
+input_path = f'{PROCESSED_DATA_FOLDER}/full.csv' ##path
+output_path = f'{PROCESSED_DATA_FOLDER}/remove_break_rounds.csv' ##path
 
 # Read the CSV file
 df = pd.read_csv(input_path)

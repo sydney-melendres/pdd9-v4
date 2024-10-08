@@ -1,12 +1,13 @@
 import streamlit as st
 import pandas as pd
+from config import LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 def show_individual_player():
     # File paths
-    input_path = "data_v2/player_performance.csv" ##path
-    sb_summary = "data_v2/round_summary_adjusted.csv" ##path
+    input_path = f"{PROCESSED_DATA_FOLDER}/player_performance.csv" ##path
+    sb_summary = f"{PROCESSED_DATA_FOLDER}/round_summary_adjusted.csv" ##path
 
     # Load data
     @st.cache_data

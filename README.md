@@ -16,6 +16,8 @@ This repo processes a log file to extract and organise relevant data, ensuring t
 
 # How to run the app
 
+** First upload the log file
+
 There are 2 ways to run the app:
 
 1. Deploy zeta.py into a website hosted by Streamlit.

@@ -1,4 +1,22 @@
 import subprocess
+from config import LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER
+
+# Print each directory
+print(f"Logs Directory: {LOG_FOLDER}")
+print(f"Data Directory: {PROCESSED_DATA_FOLDER}")
+print(f"Backup Directory: {RAW_DATA_FOLDER}")
+
+# Example: Create directories if needed
+from pathlib import Path
+
+# Loop through the directories and create them if they don't exist
+for folder in [LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER]:
+    path = Path(folder)
+    if path and not path.exists():
+        path.mkdir(parents=True, exist_ok=True)
+        print(f"Directory '{path}' created successfully.")
+    else:
+        print(f"Directory '{path}' already exists.")
 
 scripts = [
     "processes/1_start.py",

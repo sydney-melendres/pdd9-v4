@@ -1,8 +1,9 @@
 import pandas as pd
+from config import LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER
 
 # Create summary dataframes for each round
-input_path = 'data_v2/ignore_suicides.csv'  # path
-output_path = 'data_v2/player_performance.csv'  # path
+input_path = f'{PROCESSED_DATA_FOLDER}/ignore_suicides.csv'  # path
+output_path = f'{PROCESSED_DATA_FOLDER}/player_performance.csv'  # path
 
 # Load the input CSV file
 df = pd.read_csv(input_path)
