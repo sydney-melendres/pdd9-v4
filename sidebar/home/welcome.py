@@ -51,7 +51,7 @@ def show_welcome():
     3. **Visualisation**: The processed data is transformed into interactive graphs and charts.
     """)
 
-    uploaded_files = st.file_uploader("Choose CSV files", accept_multiple_files=True, key="file_uploader")
+    uploaded_files = st.file_uploader("Upload file/s", accept_multiple_files=True, key="file_uploader")
 
     if st.button("Upload", key="upload_files"):
         if uploaded_files:

@@ -167,7 +167,7 @@ def show_analysis():
         st.title('Comprehensive Player Performance Analysis')
 
         # Sidebar for selections
-        st.sidebar.header('Filters and Analyses')
+        st.sidebar.header('Filters')
 
         # Player selection
         all_players = pd.concat([player_performance['killer_ip'], player_performance['victim_ip']]).unique()
