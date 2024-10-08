@@ -70,7 +70,11 @@ def show_credits():
     student1 = (
         "Sydney Melendres", 
         "sydney.n.melendres@student.uts.edu.au", 
+<<<<<<< HEAD
         "assets/profile/sydney.jpeg",
+=======
+        "images/profile/sydney.jpeg",
+>>>>>>> 67c5d928a2c2464abda45d7f6f212fa32943d5fa
         "https://www.linkedin.com/in/sydneymelendres/", 
         "https://github.com/sydney-melendres", 
         "https://sydneymelendres.notion.site/Hello-I-m-Sydney-5aa767e093144cf185fbe2bcdeb13e27?pvs=4"
@@ -78,7 +82,11 @@ def show_credits():
     student2 = (
         "Beau Ingram", 
         "beau.ingram@student.uts.edu.au", 
+<<<<<<< HEAD
         "assets/profile/beau.jpeg",
+=======
+        "images/profile/beau.jpeg",
+>>>>>>> 67c5d928a2c2464abda45d7f6f212fa32943d5fa
         "https://www.linkedin.com/in/beau-ingram/",
         "https://github.com/modem9000",
         None  # No website provided
@@ -86,7 +94,11 @@ def show_credits():
     student3 = (
         "Andrew Vo", 
         "hiep.k.vo@student.uts.edu.au", 
+<<<<<<< HEAD
         "assets/profile/andrew.jpeg",
+=======
+        "images/profile/andrew.jpeg",
+>>>>>>> 67c5d928a2c2464abda45d7f6f212fa32943d5fa
         "https://www.linkedin.com/in/andrew-vo-0311/",
         "https://github.com/hiepvo01",
         "https://hiepvo01.github.io/Portfolio/"
@@ -103,28 +115,44 @@ def show_credits():
     uts1 = (
         "**Minh Pham** | UTS Research Fellow", 
         "duc.pham@uts.edu.au",
+<<<<<<< HEAD
         "assets/profile/minh.jpeg",
+=======
+        "images/profile/minh.jpeg",
+>>>>>>> 67c5d928a2c2464abda45d7f6f212fa32943d5fa
         "https://www.linkedin.com/in/duc-minh-pham-3993352a/",
         None, None
     )
     uts2 = (
         "**Daniel Franklin** | UTS Associate Professor", 
         "daniel.franklin@uts.edu.au",
+<<<<<<< HEAD
         "assets/profile/daniel.jpeg",
+=======
+        "images/profile/daniel.jpeg",
+>>>>>>> 67c5d928a2c2464abda45d7f6f212fa32943d5fa
         "https://www.linkedin.com/in/daniel-franklin-bb2420/overlay/photo/",
         None, None
     )
     nbn1 = (
         "**Mark Vanston** | NBN General Manager", 
         None,
+<<<<<<< HEAD
         "assets/profile/mark.jpeg",
+=======
+        "images/profile/mark.jpeg",
+>>>>>>> 67c5d928a2c2464abda45d7f6f212fa32943d5fa
         "https://www.linkedin.com/in/markvanston/",
         None, None
     )
     nbn2 = (
         "**Max Downey** | NBN Solutions Architect", 
         None,
+<<<<<<< HEAD
         "assets/profile/max.jpeg",
+=======
+        "images/profile/max.jpeg",
+>>>>>>> 67c5d928a2c2464abda45d7f6f212fa32943d5fa
         "https://www.linkedin.com/in/max-downey-1b310147/",
         None, None
     )

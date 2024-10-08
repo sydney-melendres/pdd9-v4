@@ -47,3 +47,8 @@ summary_df = pd.DataFrame(summary_data)
 summary_df.to_csv(output_path, index=False)
 
 print(f"Round score summary saved to {output_path}")
+
+# Print out the player ID to IP mapping for reference
+print("\nPlayer ID to IP mapping:")
+for player_id, ip in player_ip_map.items():
+    print(f"Player {player_id}: {ip}")

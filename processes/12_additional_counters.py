@@ -20,8 +20,8 @@ df['deaths_total'] = 0
 players = df['player_id'].unique()
 
 for player in players:
-    df[f'killed_by_Player_{player}'] = 0
-    df[f'killed_Player_{player}'] = 0
+    df[f'killed_by_{player}'] = 0
+    df[f'killed_{player}'] = 0
 
 # Function to calculate the counts for each round
 def calculate(group):
