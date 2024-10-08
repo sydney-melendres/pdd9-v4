@@ -1,11 +1,12 @@
 import streamlit as st
 from PIL import Image
+import time
+import os
+import subprocess
 
 st.set_page_config(layout="wide", page_title="Quake 3 Analysis Dashboard", page_icon="🎮")
 
 def show_welcome():
-
-    # Custom CSS for minimal styling
     st.markdown("""
     <style>
     .title {
@@ -24,62 +25,57 @@ def show_welcome():
     </style>
     """, unsafe_allow_html=True)
 
-    # Header with logos
-    col1, col2, col3 = st.columns([4, 1, 1])
-
+    col1, col2, col3, col4 = st.columns([0.75, 3.5, 0.75, 0.75])
+        
     with col1:
-        st.title("Quake 3 Analysis Dashboard")
+        quake_logo = Image.open('assets/quake-3.png')
+        st.image(quake_logo, width=100)
 
     with col2:
-        logo1 = Image.open('Images/NBN.png')
-        st.image(logo1, width=180)
+        st.title("Quake 3 Analysis Dashboard")
 
     with col3:
-        logo2 = Image.open('Images/UTS.png')
-        st.image(logo2, width=200)
+        nbn_logo = Image.open('assets/NBN.png')
+        st.image(nbn_logo, width=150)
 
-    c1, c2 = st.columns(2)
+    with col4:
+        uts_logo = Image.open('assets/UTS.png')
+        st.image(uts_logo, width=200)
 
-    with c1:
-        st.info("⬅️ New to the dashboard? Check out our Site Guide page for support.")
-        st.write("This dashboard provides comprehensive insights into player performance, game rounds, and other crucial metrics in Quake 3. Explore different sections using the sidebar to gain valuable insights into your gaming data.")
-        st.markdown("""
-        Our dashboard offers:
-        - 📊 Comprehensive player statistics
-        - 🏆 Detailed round analysis
-        - 🔍 Insightful latency metrics
-        - 🧠 Advanced gaming experiments data
-        """)
-        
-        # st.subheader("Participate in Our Research")
-        # st.write("We're conducting exciting experiments to further our understanding of gaming performance:")
-        
-        # but1, but2 = st.columns([2, 5])
-        
-        # with but1:
-        #     if st.button("UTS Campus Experiments", key="uts_experiments"):
-        #         st.switch_page("utsexperiments")    
-        # with but2:
-        #     st.write("Our controlled studies at the UTS.")
-            
-        # but3, but4 = st.columns([2,5])
-        
-        # with but3:
-        #     if st.button("Large Event Experiments", key="scaled_experiments"):
-        #         st.switch_page("eventexperiments.py")
-            
-        # with but4:
-        #     st.write("Larger-scale gaming sessions.")
+    st.write("This dashboard provides comprehensive insights into player performance, game rounds, and other crucial metrics in Quake 3. Explore different sections to gain valuable insights into your gaming data.")
 
-    with c2:
-        st.subheader("How It Works")
-        st.markdown("""
-        1. **Data Input**: Quake 3 game logs and participant surveys are uploaded into our system.
-        2. **Processing**: Our Python backend parses, extracts, and analyses the data.
-        3. **Visualisation**: The processed data is transformed into interactive graphs and charts.
-        4. **User Interaction**: You can access the UI, select filters, and explore the analysed data.
-        """)
+    st.subheader("How It Works")
+    st.markdown("""
+    1. **Data Input**: Quake 3 game logs and participant surveys are uploaded into our system.
+    2. **Processing**: Our Python backend parses, extracts, and analyses the data.
+    3. **Visualisation**: The processed data is transformed into interactive graphs and charts.
+    """)
 
-        if st.button("Get Started Here", key="get_started"):
-            st.switch_page("../start.py")
-        st.write("*Note: Additional pages will become visible once you've uploaded files.*")
+    uploaded_files = st.file_uploader("Upload file/s", accept_multiple_files=True, key="file_uploader")
+
+    if st.button("Upload", key="upload_files"):
+        if uploaded_files:
+            for uploaded_file in uploaded_files:
+                bytes_data = uploaded_file.read()
+                st.write(f"Filename: {uploaded_file.name}")
+                
+                # Save the file to the 'app/import' directory
+                save_path = os.path.join('app', 'import', uploaded_file.name)
+                with open(save_path, 'wb') as f:
+                    f.write(bytes_data)
+                st.success(f"File {uploaded_file.name} has been uploaded successfully!")
+        else:
+            st.warning("Please select files to upload.")
+
+    if st.button("Reset", key="reset"):
+        try:
+            # Run the reset script
+            result = subprocess.run(['python', 'processes/reset.py'], capture_output=True, text=True, check=True)
+            st.success("Reset completed successfully!")
+            if result.stdout:
+                st.info(f"Reset script output: {result.stdout}")
+        except subprocess.CalledProcessError as e:
+            st.error(f"An error occurred during reset: {e.stderr}")
+
+if __name__ == "__main__":
+    show_welcome()

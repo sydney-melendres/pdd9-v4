@@ -1,8 +1,9 @@
 import pandas as pd
+from config import LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER
 import os
 
-input_path = 'final-data/no_blanks.csv'
-output_dir = 'final-data/player_performance_per_round.csv'
+input_path = f'{PROCESSED_DATA_FOLDER}/no_blanks.csv'  # path to input CSV
+output_dir = f'{PROCESSED_DATA_FOLDER}/player_performance_per_round'  # directory to store output files
 
 # Read the CSV file
 df = pd.read_csv(input_path)
@@ -23,8 +24,17 @@ combined_df = pd.concat([df, death_events], ignore_index=True)
 combined_df = combined_df.sort_values('timestamp')
 
 # Group by game_round and player_ip and save each group to a separate CSV file
-for (game_round, player_ip), group in combined_df.groupby(['game_round', 'player_ip']):
-    output_path = os.path.join(output_dir, f'round_{game_round}_player_{player_ip}.csv')
+for (game_round, player_ip), group in df.groupby(['game_round', 'player_ip']):
+    # Replace '<world>' with 'world' in the filename to avoid invalid characters
+    safe_player_ip = 'world' if player_ip == '<world>' else player_ip
+    
+    # Create the output filename
+    output_filename = f'round_{game_round}_player_{safe_player_ip}.csv'
+    
+    # Join the output directory with the filename
+    output_path = os.path.join(output_dir, output_filename)
+    
+    # Save the group to a CSV file
     group.to_csv(output_path, index=False)
     # print(f'Saved round {game_round} for player {player_ip} to {output_path}')
 

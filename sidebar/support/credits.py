@@ -70,7 +70,7 @@ def show_credits():
     student1 = (
         "Sydney Melendres", 
         "sydney.n.melendres@student.uts.edu.au", 
-        "images/profile/sydney.jpeg",
+        "assets/profile/sydney.jpeg",
         "https://www.linkedin.com/in/sydneymelendres/", 
         "https://github.com/sydney-melendres", 
         "https://sydneymelendres.notion.site/Hello-I-m-Sydney-5aa767e093144cf185fbe2bcdeb13e27?pvs=4"
@@ -78,7 +78,7 @@ def show_credits():
     student2 = (
         "Beau Ingram", 
         "beau.ingram@student.uts.edu.au", 
-        "images/profile/beau.jpeg",
+        "assets/profile/beau.jpeg",
         "https://www.linkedin.com/in/beau-ingram/",
         "https://github.com/modem9000",
         None  # No website provided
@@ -86,7 +86,7 @@ def show_credits():
     student3 = (
         "Andrew Vo", 
         "hiep.k.vo@student.uts.edu.au", 
-        "images/profile/andrew.jpeg",
+        "assets/profile/andrew.jpeg",
         "https://www.linkedin.com/in/andrew-vo-0311/",
         "https://github.com/hiepvo01",
         "https://hiepvo01.github.io/Portfolio/"
@@ -103,28 +103,28 @@ def show_credits():
     uts1 = (
         "**Minh Pham** | UTS Research Fellow", 
         "duc.pham@uts.edu.au",
-        "images/profile/minh.jpeg",
+        "assets/profile/minh.jpeg",
         "https://www.linkedin.com/in/duc-minh-pham-3993352a/",
         None, None
     )
     uts2 = (
         "**Daniel Franklin** | UTS Associate Professor", 
         "daniel.franklin@uts.edu.au",
-        "images/profile/daniel.jpeg",
+        "assets/profile/daniel.jpeg",
         "https://www.linkedin.com/in/daniel-franklin-bb2420/overlay/photo/",
         None, None
     )
     nbn1 = (
         "**Mark Vanston** | NBN General Manager", 
         None,
-        "images/profile/mark.jpeg",
+        "assets/profile/mark.jpeg",
         "https://www.linkedin.com/in/markvanston/",
         None, None
     )
     nbn2 = (
         "**Max Downey** | NBN Solutions Architect", 
         None,
-        "images/profile/max.jpeg",
+        "assets/profile/max.jpeg",
         "https://www.linkedin.com/in/max-downey-1b310147/",
         None, None
     )

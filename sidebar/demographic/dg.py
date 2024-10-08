@@ -1,12 +1,22 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 import pandas as pd
+from config import LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER
 import plotly.express as px
 import plotly.graph_objects as go
+import os 
+import re
 
 def show_demographic():
 
-    csv_file = 'survey-data/demographics.csv'
+    def find_csv_file():
+        import_dir = os.path.join('app', 'import')
+        for file in os.listdir(import_dir):
+            if re.match(r'.*\.csv$', file):
+                return os.path.join(import_dir, file)
+        return None
+    
+    csv_file = find_csv_file()
 
     def preprocess_data(df):
         for column in df.columns:
@@ -80,7 +90,25 @@ def show_demographic():
             st.error(f"An error occurred while reading the file: {str(e)}")
             return None
 
-    st.title('Demographic Overview')
+    @st.cache_data
+    def load_data():
+        if csv_file is None:
+            st.error("No CSV file found in the app/import directory.")
+            return None
+        try:
+            df = pd.read_csv(csv_file)
+            return preprocess_data(df)
+        except FileNotFoundError:
+            st.error(f"File not found: {csv_file}")
+            return None
+        except pd.errors.EmptyDataError:
+            st.error(f"The file {csv_file} is empty.")
+            return None
+        except Exception as e:
+            st.error(f"An error occurred while reading the file: {str(e)}")
+            return None
+
+    st.title('Demographic')
 
     df = load_data()
 
@@ -103,9 +131,9 @@ def show_demographic():
         
         if selected == "Overall":
             columns_to_plot = st.multiselect(
-                'Select Questions to Analyze',
-                df.columns,
-                default="What platforms do you use to play games? (e.g., PC, console, mobile)"
+                'Select Question/s to Analyse',
+                options=df.columns,
+                default=[df.columns[0]]  # This selects the first column as the default
             )
             
             if columns_to_plot:
