@@ -9,8 +9,6 @@ import re
 
 def show_demographic():
 
-    # csv_file = 'survey-data_v2/demographics.csv'
-
     def find_csv_file():
         import_dir = os.path.join('app', 'import')
         for file in os.listdir(import_dir):
@@ -19,7 +17,6 @@ def show_demographic():
         return None
     
     csv_file = find_csv_file()
-
 
     def preprocess_data(df):
         for column in df.columns:
@@ -134,9 +131,9 @@ def show_demographic():
         
         if selected == "Overall":
             columns_to_plot = st.multiselect(
-                'Select Questions to Analyze',
-                df.columns,
-                default="What platforms do you use to play games? (e.g., PC, console, mobile)"
+                'Select Question/s to Analyse',
+                options=df.columns,
+                default=[df.columns[0]]  # This selects the first column as the default
             )
             
             if columns_to_plot:
