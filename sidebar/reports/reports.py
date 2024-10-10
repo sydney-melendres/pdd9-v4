@@ -32,9 +32,9 @@ def show_reports():
         )
 
         if general_option == "Latency":
-            general_latency.show_latency()
+            show_latency()
         elif general_option == "Round":
-            general_round.show_round()
+            show_round()
         elif general_option == "Player Performance":
             show_all_players()
 
@@ -47,4 +47,4 @@ def show_reports():
         )
 
         if player_option == "Player Performance":
-            player_specific.show_individual_player()
+            show_individual_player()
