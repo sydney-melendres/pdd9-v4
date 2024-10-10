@@ -51,9 +51,9 @@ def show_welcome():
     3. **Visualisation**: The processed data is transformed into interactive graphs and charts.
     """)
 
-    uploaded_files = st.file_uploader("Upload file/s", accept_multiple_files=True, key="file_uploader")
+    uploaded_files = st.file_uploader("Upload file/s", accept_multiple_files=True)
 
-    if st.button("Upload", key="upload_files"):
+    if st.button("Upload"):
         if uploaded_files:
             for uploaded_file in uploaded_files:
                 bytes_data = uploaded_file.read()
@@ -67,7 +67,7 @@ def show_welcome():
         else:
             st.warning("Please select files to upload.")
 
-    if st.button("Reset", key="reset"):
+    if st.button("Reset"):
         try:
             # Run the reset script
             result = subprocess.run(['python', 'processes/reset.py'], capture_output=True, text=True, check=True)
@@ -76,5 +76,3 @@ def show_welcome():
                 st.info(f"Reset script output: {result.stdout}")
         except subprocess.CalledProcessError as e:
             st.error(f"An error occurred during reset: {e.stderr}")
-
-show_welcome()
