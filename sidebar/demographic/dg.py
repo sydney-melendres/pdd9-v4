@@ -4,12 +4,12 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import os 
-from config import LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER, IMPORT_FOLDER
+from config import LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER, IMPORT_FOLDER, RULES_PATH
 
 def show_demographic():
 
     csv_file = f'{IMPORT_FOLDER}/demographics.csv'
-    insight_rules_file = 'sidebar/demographic/insight_rules.csv'
+    insight_rules_file = f'{RULES_PATH}/insight_rules.csv'
 
     def preprocess_data(df):
         for column in df.columns:
