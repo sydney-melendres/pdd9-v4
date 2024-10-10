@@ -77,5 +77,4 @@ def show_welcome():
         except subprocess.CalledProcessError as e:
             st.error(f"An error occurred during reset: {e.stderr}")
 
-if __name__ == "__main__":
-    show_welcome()
+show_welcome()
