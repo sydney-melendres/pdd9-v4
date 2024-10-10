@@ -1,27 +1,40 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-import sidebar as sb
 from datetime import datetime
+import importlib
+import sys
+import os
+from pathlib import Path
+
+# Add the project root directory to Python's module search path
+project_root = str(Path(__file__).resolve().parent.parent)
+sys.path.insert(0, project_root)
+
+from sidebar.home.welcome import show_welcome
+from sidebar.demographic.dg import show_demographic
+from sidebar.reports.reports import show_reports
+from sidebar.support.support import show_support
+from sidebar.analysis.analysis import show_analysis
 
 pages = [
     {"name": "Home", "icon": "house"},
     {"name": "Demographic", "icon": "people"},
     {"name": "Reports", "icon": "clipboard-data"},
-    # {"name": "Gaming Experiments", "icon": "controller"},
+    {"name": "Analysis", "icon": "graph-up-arrow"},
     {"name": "Support", "icon": "question-circle"}
 ]
 
 def display_page(page_name):
     if page_name == "Home":
-        sb.show_welcome()
+        show_welcome()
     elif page_name == "Demographic":
-        sb.show_demographic()
+        show_demographic()
     elif page_name == "Reports":
-        sb.show_reports()
-    # elif page_name == "Gaming Experiments":
-    #     sb.show_experiments()
+        show_reports()
+    elif page_name == "Analysis":
+        show_analysis()
     elif page_name == "Support":
-        sb.show_support()
+        show_support()
 
 # Initialize session state
 if 'current_page' not in st.session_state:

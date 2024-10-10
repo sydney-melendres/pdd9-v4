@@ -1,19 +1,18 @@
 import pandas as pd
+from config import LOG_FOLDER, PROCESSED_DATA_FOLDER, RAW_DATA_FOLDER
 
-# Create summary dataframes for each round
-
-input_path = 'final-data/remove_break_rounds.csv'
-output_path = 'final-data/round_summary.csv'
+# File paths
+input_path = f'{PROCESSED_DATA_FOLDER}/remove_break_rounds.csv'
+output_path = f'{PROCESSED_DATA_FOLDER}/round_summary.csv'
 
 # Read the CSV file
 df = pd.read_csv(input_path)
 
-# Get unique player IPs and create a mapping
-unique_player_ips = df['player_ip'].unique()
-player_ip_map = {i+1: ip for i, ip in enumerate(unique_player_ips)}
+# Create a mapping of player_id to player_ip
+player_ip_map = df[['player_id', 'player_ip']].drop_duplicates().set_index('player_id')['player_ip'].to_dict()
 
-# Reverse mapping for easy lookup
-ip_player_map = {v: k for k, v in player_ip_map.items()}
+# Get unique player IDs from the data
+player_ids = df['player_id'].unique()
 
 # Initialize a list to store the summary data
 summary_data = []
@@ -23,9 +22,9 @@ for game_round, group in df.groupby('game_round'):
     current_map = group['map'].iloc[0] if pd.notna(group['map'].iloc[0]) else ''
     current_latency = group['latency'].iloc[0] if pd.notna(group['latency'].iloc[0]) else ''
     
-    for player_ip in unique_player_ips:
-        player_id = ip_player_map[player_ip]
-        player_data = group[group['player_ip'] == player_ip]
+    for player_id in player_ids:
+        player_ip = player_ip_map.get(player_id, f'Unknown_IP_{player_id}')
+        player_data = group[group['player_id'] == player_id]
         if not player_data.empty:
             last_record = player_data.iloc[-1]
             score = last_record['score'] if pd.notna(last_record['score']) else 0
