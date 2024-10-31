@@ -76,7 +76,7 @@ if df is not None:
             x=list(result_dfs.keys()), 
             y=means, 
             mode='lines+markers', 
-            name=f'Player {player_ip}',
+            name=f'{player_ip}',
             line=dict(width=6, color=color)  # Set color here
         ))
 
@@ -89,7 +89,7 @@ if df is not None:
             'yanchor': 'top',
             'font': {'size': 48}
         },
-        xaxis_title='Latency',
+        xaxis_title='Latency(ms)',
         yaxis_title='Mean Score',
         xaxis=dict(
             title_font=dict(size=36),

@@ -56,7 +56,7 @@ if df is not None:
 
     for player_ip in df['player_ip'].unique():
         means = [result_dfs[latency].loc[player_ip, 'Mean'] for latency in result_dfs.keys() if player_ip in result_dfs[latency].index]
-        fig.add_trace(go.Scatter(x=list(result_dfs.keys()), y=means, mode='lines+markers', name=f'Player {player_ip}'))
+        fig.add_trace(go.Scatter(x=list(result_dfs.keys()), y=means, mode='lines+markers', name=f'{player_ip}'))
 
     fig.update_layout(
         title={
@@ -67,7 +67,7 @@ if df is not None:
             'yanchor': 'top',
             'font': {'size': 20}
         },
-        xaxis_title='Latency',
+        xaxis_title='Latency(ms)',
         yaxis_title='Mean Score',
         height=650,  # Slightly reduced height
         legend=dict(
