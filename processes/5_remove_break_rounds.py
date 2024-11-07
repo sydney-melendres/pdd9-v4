@@ -25,7 +25,7 @@ current_map = None
 filtered_rows = []
 
 for index, row in df.iterrows():
-    if row['map'] != 'kaos' and pd.notna(row['map']):
+    if row['map'] != 'kaos2' and pd.notna(row['map']):
         row, current_map, game_round_counter = update_game_round(row, current_map, game_round_counter)
         filtered_rows.append(row)
 
